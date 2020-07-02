@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../../../store/actions/index';
 
 import classes from './Toolbar.css';
 import Logo from '../../Logo/Logo';
@@ -12,9 +14,15 @@ const toolbar = ( props ) => (
             <Logo />
         </div>
         <nav className={classes.DesktopOnly}>
-            <NavigationItems />
+            <NavigationItems auth={props.auth}/>
         </nav>
     </header>
 );
 
-export default toolbar;
+const mapStateToProps = state => {
+    return {
+        authenticated: state.auth.token
+    }
+}
+
+export default connect(mapStateToProps)(toolbar);
