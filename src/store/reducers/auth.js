@@ -44,6 +44,8 @@ const reducer = (state = initialState, action) => {
             }
         default:
             return state;
+        //since nothimg is getting executed after this line:
+        // eslint-disable-next-line
     };
 };
 
